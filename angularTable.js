@@ -2,7 +2,7 @@
 var tableData=[{"name":"Pramod Murke","bday":"1993-06-09T09:05:05.035Z","salary":6000,"city":"sangli"},
 		               {"name":"abcd efghi","bday":"1994-09-06T09:05:05.035Z","salary":8000,"city":"pune"},
 		               {"name":"jklm nopq","bday":"1995-02-11T09:05:05.035Z","salary":10000,"city":"mumbai"},
-		               {"name":"rst uvwxyz","bday":"1994-03-05T09:05:05.035Z","salary":12000,"city":"solappur"}];
+		               {"name":"rst uvwxyz","bday":"1994-03-05T09:05:05.035Z","salary":12000,"city":"solapur"}];
 		
 //creating module 
 		angular.module("tblDemo",[])
