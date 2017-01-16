@@ -9,6 +9,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
 	<script src="js/angularTable.js"></script>
+	<!-- style for arrow up and down for show column sorting order -->
 	<style>
 		.arrow-up {
 		  width: 0; 
@@ -30,25 +31,33 @@
 	</style>
 </head>
 <body>
+	<!-- give tblController to div -->
 	<div class="container" ng-app="tblDemo" ng-controller="tblController">
 		<h1>Angular js Table</h1>
 		<h4>Hide column</h4>
+		<!-- check box for hide the column -->
 		<input type="checkbox" ng-model="hideName"> Name &nbsp;&nbsp;
 		<input type="checkbox" ng-model="hideBday"> BirthDay &nbsp;&nbsp;
 		<input type="checkbox" ng-model="hideSalary"> Salary &nbsp;&nbsp;
 		<input type="checkbox" ng-model="hideCity"> City &nbsp;&nbsp;
 		<input type="text" ng-model="searchText" style="float:right;"><br><br>
+		
+		<!-- table start and sortColNm initalized to sort name column at page load -->
 		<table class="table" ng-init="sortColNm='name'">
 			<tr>
+				<!-- column names -->
+				<!-- ng-click for call sort function and ng-class for to show arrrow on sort column -->
 				<th ng-hide="hideName" ng-click="sortColumn('name')" > Name <div ng-class="changeClass('name')"> </div></th>
 				<th ng-hide="hideBday" ng-click="sortColumn('bday')" > Birth Day <div ng-class="changeClass('bday')"></div></th>
 				<th ng-hide="hideSalary" ng-click="sortColumn('salary')" > Salary <div ng-class="changeClass('salary')"></div></th>
 				<th ng-hide="hideCity" ng-click="sortColumn('city')" > City <div ng-class="changeClass('city')"></div></th>
 			</tr>
-			<tr  ng-repeat="row in table| filter:search  | orderBy:">
+			<!--display dat of table  -->
+			<!-- ng-repeat for for loop table to show row filter for serching option and order for ascending or descending order sort -->
+			<tr  ng-repeat="row in table | filter:search  | orderBy:">
 				<td ng-hide="hideName" >{{row.name}}</td>
-				<td ng-hide="hideBday" >{{row.bday | date :"dd-MM-yyyy"}}</td>
-				<td ng-hide="hideSalary" >{{row.salary | currency:"&#8377;"}}</td>
+				<td ng-hide="hideBday" >{{row.bday | date :"dd-MM-yyyy"}}</td> <!-- filter for date to show all date month and year -->
+				<td ng-hide="hideSalary" >{{row.salary | currency:"&#8377;"}}</td><!-- filter to show currency for display Rupees sign -->
 				<td ng-hide="hideCity" >{{row.city}}</td>
 			</tr>
 		</table>
